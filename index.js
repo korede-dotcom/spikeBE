@@ -171,6 +171,51 @@ app.post("/contact",async(req,res)=>{
             phone,
             message
         })
+
+        const request = mailjet
+                    .post("send", {'version': 'v3.1'})
+                    .request({
+                      "Messages":[
+                        {
+                          "From": {
+                            "Email": "koredebada@gmail.com",
+                            "Name": "Spike N Span "
+                          },
+                          "To": [
+                            {
+                              "Email": email,
+                              "Name": name
+                            },
+                            {
+                              "Email": process.env.adminEmail,
+                              "Name": process.env.adminName
+                            }
+                          ],
+                          "Subject": "New Contact 🧹",
+                          "TextPart": 
+                        `
+                          name : ${name}
+                          email: ${email}
+                          phone : ${phone}
+                          ${message}
+
+                        \n Best Regards
+                        \n Spike N Span Team
+                        `,
+                       
+                     
+                          "HTMLPart": ``,
+                        //   "CustomID": "AppGettingStartedTest"
+                        }
+                      ]
+                    })
+                    request
+                      .then((result) => {
+                        console.log(result.body)
+                      })
+                      .catch((err) => {
+                        console.log(err.statusCode)
+                      })
         await newContacts.save()
         res.status(201).json({
             status:true,
