@@ -3,7 +3,7 @@ const path = require("path")
 const app = express()
 const cors = require('cors')
 const dotenv = require("dotenv").config()
-const connectDB = require('./models/ConnectDB')()
+const connectDB = require('./models/ConnectDB')
 const Bookings = require("./models/bookings");
 const Contacts = require("./models/contacts");
 const Mailjet = require('node-mailjet');
@@ -13,7 +13,7 @@ const mailjet = Mailjet.apiConnect(
 );
 
 
-
+connectDB()
  
 app.use(cors())
 app.use(express.json())
