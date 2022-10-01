@@ -3,7 +3,7 @@ const path = require("path")
 const app = express()
 const cors = require('cors')
 const dotenv = require("dotenv").config()
-const connectDB = require('./models/ConnectDB')
+// const connectDB = require('./models/ConnectDB')
 const Bookings = require("./models/bookings");
 const Contacts = require("./models/contacts");
 const Mailjet = require('node-mailjet');
@@ -13,8 +13,26 @@ const mailjet = Mailjet.apiConnect(
 );
 
 
+const mongoose = require('mongoose');
+
+const connectDB = async () => {
+    try {
+        mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log('MongoDB Connected...');
+       
+    
+    } catch (err) {
+
+        console.error(err.message);
+        // process.exit(1);
+    }
+};
+
+    
 connectDB()
- 
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
