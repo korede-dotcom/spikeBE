@@ -12,31 +12,35 @@ const mailjet = Mailjet.apiConnect(
     process.env.mailSecret,
 );
 
-app.use(cors())
 
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
     try {
         mongoose.connect(process.env.MONGO_URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
         });
         console.log('MongoDB Connected...');
-       
-    
-    } catch (err) {
-
+        
+        
+      } catch (err) {
+        
         console.error(err.message);
         // process.exit(1);
-    }
-};
-
+      }
+    };
     
-connectDB()
+    
+    connectDB()
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }));
+    app.options('*', cors()) 
+    app.use(cors({
+      origin:"*"
+    }))
+    app.use(express.json())
+    app.use(express.urlencoded({ extended: true }));
+ 
 
 
 app.use(express.static(path.join(__dirname,"public")))
