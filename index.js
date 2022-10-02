@@ -12,6 +12,7 @@ const mailjet = Mailjet.apiConnect(
     process.env.mailSecret,
 );
 
+app.use(cors())
 
 const mongoose = require('mongoose');
 
@@ -33,7 +34,7 @@ const connectDB = async () => {
 
     
 connectDB()
-app.use(cors())
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
