@@ -13,6 +13,11 @@ const mailjet = Mailjet.apiConnect(
 );
 
 
+
+
+app.options('*', cors()) 
+app.use(cors())
+
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
@@ -34,10 +39,6 @@ const connectDB = async () => {
     
     connectDB()
 
-    app.options('*', cors()) 
-    app.use(cors({
-      origin:"*"
-    }))
     app.use(express.json())
     app.use(express.urlencoded({ extended: true }));
  
@@ -253,7 +254,6 @@ app.post("/contact",async(req,res)=>{
     }
 })
 
-app.get("/",)
 
 
 const PORT = 6200;
