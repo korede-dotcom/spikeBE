@@ -15,7 +15,7 @@ const mailjet = Mailjet.apiConnect(
 
 
 var corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://spike-cdz3.onrender.com',
   optionsSuccessStatus: 200 ,
   
 }
