@@ -16,10 +16,11 @@ const mailjet = Mailjet.apiConnect(
 
 var corsOptions = {
   origin: 'http://localhost:3000',
-  optionsSuccessStatus: 200 // For legacy browser support
+  optionsSuccessStatus: 200 ,
+  
 }
 // app.options('*', cors()) 
-app.use(cors(cors))
+app.use(cors(corsOptions))
 
 const mongoose = require('mongoose');
 
