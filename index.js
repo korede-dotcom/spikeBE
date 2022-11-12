@@ -14,13 +14,17 @@ const mailjet = Mailjet.apiConnect(
 
 
 
-var corsOptions = {
-  origin: 'https://spike-cdz3.onrender.com',
-  optionsSuccessStatus: 200 ,
-  
-}
+
 // app.options('*', cors()) 
-app.use(cors(corsOptions))
+
+app.use(cors({
+  origin: '*',
+  // credentials: true,
+  whitelist: [
+      'https://spike-cdz3.onrender.com',
+  ],
+  
+}));
 
 const mongoose = require('mongoose');
 
