@@ -265,4 +265,4 @@ app.post("/contact",async(req,res)=>{
 
 
 // const PORT = 6200;
-app.listen(process.env.PORT || PORT, ()=> console.log('server running'))
+app.listen(process.env.PORT || 6200, ()=> console.log('server running'))
