@@ -58,7 +58,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 app.get("/",async (req,res)=>{
-    res.render("index")
+   res.send("welcome")
 })
 
 
