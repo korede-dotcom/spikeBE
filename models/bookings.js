@@ -16,8 +16,8 @@ const BookingsSchema = new mongoose.Schema({
     homeStatus:{
         type: String,
         required: true,
-        enum: ["slightly Dirty","Pretty Dirty" ,"Very Dirty"],
-        default:"slightly Dirty"
+        enum: ["Dirty","Really Dirty" ,"Extreme Dirty"],
+        default:"Dirty"
     },
     extra:[String],
     cleaningDate:{

@@ -14,9 +14,12 @@ const mailjet = Mailjet.apiConnect(
 
 
 
-
-app.options('*', cors()) 
-app.use(cors())
+var corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 // For legacy browser support
+}
+// app.options('*', cors()) 
+app.use(cors(cors))
 
 const mongoose = require('mongoose');
 
@@ -256,5 +259,5 @@ app.post("/contact",async(req,res)=>{
 
 
 
-const PORT = 6200;
+// const PORT = 6200;
 app.listen(process.env.PORT || PORT, ()=> console.log('server running'))
